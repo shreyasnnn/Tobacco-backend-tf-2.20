@@ -1,0 +1,15 @@
+# TensorFlow 2.20 stack
+tensorflow==2.20.0
+numpy>=1.26.0
+
+# FastAPI stack
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+
+# Other dependencies
+pillow>=10.0.0
+supabase==2.0.0
+python-dotenv==1.0.0
+python-multipart==0.0.6
+mangum==0.17.0
+requests>=2.31.0
