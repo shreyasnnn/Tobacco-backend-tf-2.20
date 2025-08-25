@@ -90,6 +90,7 @@ app = FastAPI(
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
+        'https://tobograde-tobacco-grading-system.netlify.app/',
         "https://leafgrade-tobacco-grading-system.netlify.app",  # Fixed: removed trailing slash
         "http://localhost:5173",
         "http://localhost:3000",
@@ -241,12 +242,12 @@ async def save_to_history(
         insert_data = {
             "user_id": user_id,
             "image_url": image_url,
-            "predicted_grade": result,  # Changed from 'result' to 'predicted_grade'
+            "result": result,  # Changed from 'result' to 'predicted_grade'
             "confidence": confidence,
-            "status": "completed",
+            "status": "processed",
             "processed_at": datetime.utcnow().isoformat(),
-            "model_version": "tf2.20-mobilenetv2",
-            "created_at": datetime.utcnow().isoformat()
+            "created_at": datetime.utcnow().isoformat(),
+            "model_version": "tf2.20-mobilenetv2"
         }
         
         logger.info("💾 Saving to database...")
@@ -262,7 +263,7 @@ async def save_to_history(
             "message": "Saved to history successfully",
             "image_url": image_url,
             "storage_path": folder_path,
-            "predicted_grade": result,
+            "result": result,
             "confidence": confidence,
             "user_id": user_id,
             "model_version": "tf2.20-mobilenetv2",
