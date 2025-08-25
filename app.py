@@ -90,7 +90,7 @@ app = FastAPI(
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-        'https://tobograde-tobacco-grading-system.netlify.app/',
+        'https://tobograde-tobacco-grading-system.netlify.app',
         "https://leafgrade-tobacco-grading-system.netlify.app",  # Fixed: removed trailing slash
         "http://localhost:5173",
         "http://localhost:3000",
